@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Micro-CRM - Stop Losing Leads</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e0e0e0;
+            padding: 20px 0;
+            z-index: 1000;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #25d366;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-cta {
+            background: #25d366;
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .nav-cta:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(37, 211, 102, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -300px;
+            right: -300px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 80px 0;
+            max-width: 800px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #ffffff;
+            border: 2px solid #25d366;
+            color: #25d366;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+            letter-spacing: -2px;
+        }
+
+        h1 .highlight {
+            color: #25d366;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #666666;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-primary {
+            background: #25d366;
+            color: #ffffff;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(37, 211, 102, 0.35);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1a1a1a;
+            border: 2px solid #e0e0e0;
+        }
+
+        .btn-secondary:hover {
+            background: #f5f5f5;
+            border-color: #25d366;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 60px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 900;
+            color: #25d366;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #666666;
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+            background: #fafafa;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #666666;
+            font-weight: 400;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 50px 40px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #25d366;
+            border-radius: 16px 16px 0 0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            border-color: #25d366;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-number {
+            font-size: 14px;
+            font-weight: 700;
+            color: #25d366;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .feature-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .feature-desc {
+            color: #666666;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        /* Audience Section */
+        .audience {
+            padding: 120px 0;
+            background: #ffffff;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .audience-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border: 2px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .audience-card:hover {
+            transform: translateY(-5px);
+            border-color: #25d366;
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.1);
+        }
+
+        .audience-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #25d366 0%, #20ba5a 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 36px;
+            font-weight: 900;
+            color: #ffffff;
+        }
+
+        .audience-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .audience-desc {
+            color: #666666;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 120px 0;
+            background: #fafafa;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-top: 80px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #25d366 0%, #20ba5a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 900;
+            color: #ffffff;
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.25);
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .step-desc {
+            color: #666666;
+            font-weight: 400;
+        }
+
+        /* Privacy Section */
+        .privacy {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+
+        .privacy-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border: 3px solid #25d366;
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+        }
+
+        .privacy-badge {
+            display: inline-block;
+            background: #25d366;
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .privacy-title {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+        }
+
+        .privacy-text {
+            font-size: 18px;
+            color: #666666;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #25d366 0%, #20ba5a 100%);
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 52px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .final-cta p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .final-cta .btn-primary {
+            background: #ffffff;
+            color: #25d366;
+        }
+
+        .final-cta .btn-primary:hover {
+            background: #f5f5f5;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            background: #1a1a1a;
+            color: #999999;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: #25d366;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 48px; letter-spacing: -1px; }
+            .subtitle { font-size: 18px; }
+            .cta-group { flex-direction: column; }
+            .btn { width: 100%; }
+            .section-title { font-size: 36px; }
+            .nav-cta { padding: 10px 20px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">WhatsApp CRM</div>
+            <a href="#" class="nav-cta" onclick="alert('Coming Soon! Sign up for early access.')">Get Early Access</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">v1.0.0 Beta Launch</div>
+                <h1>Stop Losing <span class="highlight">Leads</span> in Your Chats</h1>
+                <p class="subtitle">Your business runs on WhatsApp, but your leads are buried in endless chat history. WhatsApp Micro-CRM organizes your business automatically—no complex setup required.</p>
+                <div class="cta-group">
+                    <button class="btn btn-primary" onclick="alert('Coming Soon! Sign up for early access.')">Get Started Free</button>
+                    <button class="btn btn-secondary" onclick="document.querySelector('.how-it-works').scrollIntoView({behavior: 'smooth'})">See How It Works</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Setup Time Required</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Click to Capture Leads</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Data Privacy Guaranteed</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Your Sidecar for WhatsApp</h2>
+                <p class="section-subtitle">Sits next to your chat. Organizes your business. Effortlessly.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-number">FEATURE 01</div>
+                    <h3 class="feature-title">One-Click Snap</h3>
+                    <p class="feature-desc">Instantly capture client details from any chat. No typing, no copying—just click and watch the magic happen.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-number">FEATURE 02</div>
+                    <h3 class="feature-title">AI Intelligence</h3>
+                    <p class="feature-desc">Automatically extracts Next Task, Deal Value, and Lead Status (Hot/Warm/Cold) from your conversations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-number">FEATURE 03</div>
+                    <h3 class="feature-title">Pipeline Dashboard</h3>
+                    <p class="feature-desc">See all active leads in one view. Know exactly how much revenue is pending at a glance.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-number">FEATURE 04</div>
+                    <h3 class="feature-title">Bank-Grade Privacy</h3>
+                    <p class="feature-desc">Your data is stored in your own isolated database. We never sell or share your client information.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audience Section -->
+    <section class="audience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Built for Busy Professionals</h2>
+                <p class="section-subtitle">Who hate complex CRMs like Salesforce</p>
+            </div>
+            
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <div class="audience-icon">01</div>
+                    <h3 class="audience-title">Wedding Photographers</h3>
+                    <p class="audience-desc">Track inquiries and booking status seamlessly</p>
+                </div>
+                
+                <div class="audience-card">
+                    <div class="audience-icon">02</div>
+                    <h3 class="audience-title">Private Tutors</h3>
+                    <p class="audience-desc">Manage student fees and schedules effortlessly</p>
+                </div>
+                
+                <div class="audience-card">
+                    <div class="audience-icon">03</div>
+                    <h3 class="audience-title">Real Estate Agents</h3>
+                    <p class="audience-desc">Organize property leads without the hassle</p>
+                </div>
+                
+                <div class="audience-card">
+                    <div class="audience-icon">04</div>
+                    <h3 class="audience-title">Solo Founders</h3>
+                    <p class="audience-desc">Simple CRM without enterprise complexity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How to Use</h2>
+                <p class="section-subtitle">Get organized in 4 simple steps</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Open WhatsApp Web</h3>
+                    <p class="step-desc">Launch your browser and access WhatsApp Web</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Open Client Chat</h3>
+                    <p class="step-desc">Navigate to any conversation with a client</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Click "Snap Chat"</h3>
+                    <p class="step-desc">One-click capture of the entire conversation</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Watch AI Organize</h3>
+                    <p class="step-desc">See your lead instantly structured and categorized</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Section -->
+    <section class="privacy">
+        <div class="container">
+            <div class="privacy-content">
+                <div class="privacy-badge">Security First</div>
+                <h2 class="privacy-title">Your Data. Your Database. Your Control.</h2>
+                <p class="privacy-text">We use bank-grade encryption and isolated storage. Your client information never leaves your private database. We don't sell, share, or access your data. Period.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to Organize Your Business?</h2>
+            <p>Join freelancers, tutors, and agency owners who've stopped losing leads.</p>
+            <button class="btn btn-primary" onclick="alert('Coming Soon! Sign up for early access.')">Start Your Free Trial</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">WhatsApp CRM</div>
+                <div class="footer-text">
+                    <p>v1.0.0 - Initial Release (Beta)</p>
+                    <p style="margin-top: 5px;">This is an independent project and is not affiliated with WhatsApp Inc.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
